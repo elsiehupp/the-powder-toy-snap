@@ -1,0 +1,96 @@
+name: the-powder-toy-james-carroll
+base: core18
+version: '95'
+summary: An opensource 2D physics simulation game!
+description: |
+  The Powder Toy is a free physics sandbox game, which simulates air pressure and velocity, heat, gravity and a countless number of interactions between different substances!
+  The game provides you with various building materials, liquids, gases and electronic components which can be used to construct complex machines, guns, bombs, realistic terrains and almost anything else.
+   You can then mine them and watch cool explosions, add intricate wirings, play with little stickmen or operate your machine.
+  You can browse and play thousands of different saves made by the community or upload your own.
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+license: GPL-3.0
+
+parts:
+  the-powder-toy:
+    plugin: scons
+    source: https://github.com/the-powder-toy/the-powder-toy.git
+    source-type: git
+    override-build: |
+      scons --no-install-prompt --output=$SNAPCRAFT_PART_INSTALL/bin/powder
+    build-packages:
+      - libsdl2-dev
+      - libbz2-dev
+      - zlib1g-dev
+      - liblua5.1-0-dev
+      - libfftw3-dev
+      - libcurl4-openssl-dev
+    stage-packages:
+      - libasn1-8-heimdal
+      - libasound2
+      - libasyncns0
+      - libcurl4
+      - libfftw3-single3
+      - libflac8
+      - libgssapi3-heimdal
+      - libhcrypto4-heimdal
+      - libheimbase1-heimdal
+      - libheimntlm0-heimdal
+      - libhx509-5-heimdal
+      - libkrb5-26-heimdal
+      - libldap-2.4-2
+      - liblua5.1-0
+      - libnghttp2-14
+      - libogg0
+      - libpsl5
+      - libpulse0
+      - libroken18-heimdal
+      - librtmp1
+      - libsasl2-2
+      - libsdl2-2.0-0
+      - libsndfile1
+      - libsndio6.1
+      - libvorbis0a
+      - libvorbisenc2
+      - libwayland-client0
+      - libwayland-cursor0
+      - libwayland-egl1
+      - libwind0-heimdal
+      - libx11-6
+      - libxau6
+      - libxcb1
+      - libxcursor1
+      - libxdmcp6
+      - libxext6
+      - libxfixes3
+      - libxi6
+      - libxinerama1
+      - libxkbcommon0
+      - libxrandr2
+      - libxrender1
+      - libxss1
+      - libxxf86vm1
+      - libglu1-mesa
+      - mesa-utils
+      - libgl1-mesa-glx
+
+  utils:
+    plugin: dump
+    source: utils/
+    source-type: local
+
+apps:
+  the-powder-toy:
+    command: powder
+    plugs:
+      - desktop
+      - desktop-legacy
+      - network
+      - x11
+      - wayland
+      - gsettings
+      - opengl
+    extensions: [gnome-3-28]
+    command-chain:
+      - bin/home.sh

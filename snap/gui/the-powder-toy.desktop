@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=The Powder Toy
+Comment=Physics sandbox Game
+Exec=the-powder-toy-james-carroll.the-powder-toy
+Icon=${SNAP}/meta/gui/the-powder-toy.png
+Type=Application
+Categories=Game;
