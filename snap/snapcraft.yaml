@@ -1,4 +1,4 @@
-name: the-powder-toy-james-carroll
+name: the-powder-toy
 base: core18
 version: '95'
 summary: An opensource 2D physics simulation game!
