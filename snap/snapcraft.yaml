@@ -8,15 +8,19 @@ description: |
    You can then mine them and watch cool explosions, add intricate wirings, play with little stickmen or operate your machine.
   You can browse and play thousands of different saves made by the community or upload your own.
 
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+grade: stable
+confinement: strict
 license: GPL-3.0
+architectures:
+  - build-on: amd64
+
 
 parts:
   the-powder-toy:
     plugin: scons
     source: https://github.com/the-powder-toy/the-powder-toy.git
     source-type: git
+    source-tag: 'v95.0'
     override-build: |
       scons --no-install-prompt --output=$SNAPCRAFT_PART_INSTALL/bin/powder
     build-packages:
