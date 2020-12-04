@@ -102,7 +102,7 @@ layout:
 
 apps:
   the-powder-toy:
-    command: powder
+    command: bin/powder
     plugs:
       - desktop
       - desktop-legacy
