@@ -96,6 +96,10 @@ parts:
       done
     after: [the-powder-toy, utils]
 
+layout:
+  /usr/share/libdrm:
+    bind: $SNAP/usr/share/libdrm
+
 apps:
   the-powder-toy:
     command: powder
