@@ -22,7 +22,7 @@ parts:
     source-type: git
     source-tag: 'v95.0'
     override-build: |
-      scons --no-install-prompt --output=$SNAPCRAFT_PART_INSTALL/bin/powder
+      scons --release --sse --sse2 --no-warnings --no-install-prompt --output=$SNAPCRAFT_PART_INSTALL/bin/powder
     build-packages:
       - libsdl2-dev
       - libbz2-dev
